@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi perdoni? ❤️</title>
+
+<style>
+    body{
+        margin:0;
+        font-family:Arial, Helvetica, sans-serif;
+        background:linear-gradient(135deg,#ffb6c1,#ffe4e1);
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        overflow:hidden;
+    }
+
+    .box{
+        text-align:center;
+    }
+
+    h1{
+        font-size:3em;
+        color:#d63384;
+    }
+
+    p{
+        font-size:1.3em;
+        margin-bottom:40px;
+    }
+
+    button{
+        font-size:22px;
+        padding:15px 35px;
+        border:none;
+        border-radius:15px;
+        cursor:pointer;
+        transition:0.2s;
+    }
+
+    #yes{
+        background:#28a745;
+        color:white;
+        margin-right:20px;
+    }
+
+    #yes:hover{
+        transform:scale(1.1);
+    }
+
+    #no{
+        background:#dc3545;
+        color:white;
+        position:absolute;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h1>❤️ Mi perdoni? ❤️</h1>
+    <p>Prometto di farmi perdonare con tante coccole 🥺</p>
+
+    <button id="yes">Sì ❤️</button>
+    <button id="no">No 😒</button>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+
+function moveButton(){
+    const maxX = window.innerWidth - noBtn.offsetWidth;
+    const maxY = window.innerHeight - noBtn.offsetHeight;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
+
+// Scappa quando il mouse si avvicina
+noBtn.addEventListener("mouseenter", moveButton);
+
+// Anche su dispositivi touch
+noBtn.addEventListener("touchstart", function(e){
+    e.preventDefault();
+    moveButton();
+});
+
+yesBtn.addEventListener("click", () => {
+    document.body.innerHTML = `
+    <div style="display:flex;justify-content:center;align-items:center;height:100vh;flex-direction:column;background:#ffd6e7;font-family:Arial;">
+        <h1 style="font-size:60px;color:#e91e63;">❤️ GRAZIE AMORE ❤️</h1>
+        <h2>Ti prometto che non succederà più 🥹</h2>
+        <div style="font-size:80px;">🥰💖🌹</div>
+    </div>
+    `;
+});
+
+// Posizione iniziale
+moveButton();
+</script>
+
+</body>
+</html>
